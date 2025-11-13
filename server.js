@@ -6,11 +6,10 @@ require('dotenv').config();
 const saveToSheet = require('./backend/saveToSheet');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname)));
 
 // API endpoint to provide keys to the frontend
 app.get('/api/keys', (req, res) => {
@@ -31,9 +30,9 @@ app.post('/api/saveToSheet', async (req, res) => {
   }
 });
 
-// Serve the main HTML file
+// Health check for Render
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.send("Mintlink Toolkit Backend is Running ✔");
 });
 
 app.listen(port, () => {
