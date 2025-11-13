@@ -8,6 +8,9 @@ const saveToSheet = require('./backend/saveToSheet');
 const app = express();
 const port = process.env.PORT || 10000;
 
+const cors = require("cors");
+app.use(cors());
+
 // Middleware
 app.use(bodyParser.json());
 
@@ -38,3 +41,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
